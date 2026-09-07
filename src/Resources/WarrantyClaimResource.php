@@ -12,7 +12,6 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Liberu\EcommerceWarrantyAndClaimsFilament\Resources\WarrantyClaimResource\Pages\CreateWarrantyClaim;
 use Liberu\EcommerceWarrantyAndClaimsFilament\Resources\WarrantyClaimResource\Pages\EditWarrantyClaim;
 use Liberu\EcommerceWarrantyAndClaimsFilament\Resources\WarrantyClaimResource\Pages\ListWarrantyClaims;
 
@@ -23,6 +22,8 @@ final class WarrantyClaimResource extends Resource
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-shield-check';
 
     protected static ?string $navigationLabel = 'Warranty claims';
+
+    public static function canCreate(): bool { return false; }
 
     public static function form(Schema $schema): Schema
     {
@@ -49,7 +50,6 @@ final class WarrantyClaimResource extends Resource
     {
         return [
             'index' => ListWarrantyClaims::route('/'),
-            'create' => CreateWarrantyClaim::route('/create'),
             'edit' => EditWarrantyClaim::route('/{record}/edit'),
         ];
     }
